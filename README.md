@@ -16,3 +16,7 @@ Importing multiple packages, package usage paths, using the built-in "math" pack
 
 Declaration of variables and functions, implicit identification of data types, explicit declarations and rules to 
 using data types in functions, functions that return multiple values, type conversion and type inference.
+
+[Tutorial 4](./tutorial_4/go_tutorial_4.go)
+
+Introduction to using pointers. Delcaring pointers, accessing memory addresses, operaions on pointers and refering to pointer variables.
