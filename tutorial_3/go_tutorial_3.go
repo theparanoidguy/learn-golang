@@ -32,6 +32,22 @@ func addLongFloat32Format(x, y float32) float32 {
 	return x + y
 }
 
+/*Function declaration that returns multiple values
+This function below would give an error. Even if your function returns two values which have the same data type, you need
+to specify them.
+
+	func returnStrings(x, y string) string {
+		return x,y
+	}
+
+In the function above, even though the two values being returned are both strings, we cannot write the return type as string.
+We'll need to write it as (string, string). The same applies to functions returning two or more int, float64, etc.
+Correct declaration is given below
+*/
+func returnStrings(x, y string) (string, string) {
+	return x, y
+}
+
 //Start main function block
 func main() {
 	/*
@@ -70,6 +86,36 @@ func main() {
 		Please note that variable declaration types 3 and 4 shown above can only be done within a function.
 		The function can be "main" or a user defined function. In this case, we are declaring them
 		inside "main"
+	*/
+
+	//Declaring two strings
+	var word1, word2 string = "Hello", "World!"
+
+	//Dynamically declaring two strings
+	word3, word4 := "Hello", "Again!"
+
+	/*
+		Type conversion
+		Even though we cannot convert a dynamically allocated variable's data type after compilation, we can still do
+		type conversion to use it as something else. For example, we're going to use "num7" & "num8" which are identified as
+		"float64" by Go into a function that requires "float32". In order to do that, we'll convert the type of those variables.
+		We'll use the two declared variables in the "addLongFloat32Format" function
+	*/
+	var num9 float32 = float32(num7)
+	var num10 float32 = float32(num8)
+
+	/*
+		Type inference
+		Let's consider a variable which is declared as such:
+	*/
+	var x float32 = 10.5
+	y := x
+
+	/*
+		The value "10.5" is stored in the variable "y" dynamically. As we saw earlier, Go should assume the data type of such a value
+		to be "float64". However, since "y" is actually storing  the value of "x" inside it, the type of "x" is considered while dynamically
+		assigning the data type of "y". In this case, "y" becomes a "float32" variable.
+		Proof of this is demonstrated in function call 13
 	*/
 
 	/*
@@ -136,4 +182,22 @@ func main() {
 		If you wish to see the error the compiler would throw, comment out the line of code below.
 	*/
 	fmt.Println("The value of 'num5', 'num6', 'num7' & 'num8' are:", num5, num6, num7, num8, "respectively")
+
+	//Function Call - 9
+	fmt.Println(returnStrings(word1, word2))
+
+	//Function Call - 10
+	fmt.Println(returnStrings(word3, word4))
+
+	//Function Call - 11 - Using variables after converting their type and storing in a different variable
+	fmt.Println("The sum of two numbers is(Variable type conversion from 'float64' to 'float32' w/ new variables): ", addLongFloat32Format(num9, num10))
+
+	//Function call - 12 Using variables after converting their type at runtime but not storing them anywhere
+	fmt.Println("The sum of two numbers is(Variable type conversion from 'float64' to 'float32' w/o new variables): ", addLongFloat32Format(float32(num7), float32(num8)))
+
+	/*
+		Function call - 13 Using a "float32" variable "x" and a dynamically assigned variable "y" that infers "x"
+		If the variable "y" was not "float32", the compiler would have thrown an error at the function call below.
+	*/
+	fmt.Println("The sum of two numbers is(Using a 'float32' variable 'x' and another one dynamically infering 'x'): ", addLongFloat32Format(x, y))
 }
