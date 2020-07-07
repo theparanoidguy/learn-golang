@@ -17,4 +17,4 @@ a random number, introduction to using the "godoc" utility.
 # go_tutorial_3.go
 
 Declaration of variables and functions, implicit identification of data types, explicit declarations and rules to 
-using data types in functions.
+using data types in functions, functions that return multiple values, type conversion and type inference.
