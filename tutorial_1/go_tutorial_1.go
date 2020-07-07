@@ -15,8 +15,8 @@ import "fmt"
 
 //Declare a function using the basic syntax "func function_name(parameters) {}"
 func main() {
-  //"Println" function from the "fmt" package prints a piece of text and adds a new line after that.
-  fmt.Println("Welcome to Go!")
+	//"Println" function from the "fmt" package prints a piece of text and adds a new line after that.
+	fmt.Println("Welcome to Go!")
 }
 
 //In order to define the body of a function, the curly braces must start on the same line as the
